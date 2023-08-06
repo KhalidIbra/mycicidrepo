@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khalid's Weather App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+        body {
+            /* Set the background image */
+            background-image: url("https://images.unsplash.com/photo-1520185910289-6d3713d2dc44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3Vuc2V0JTIwYWJvdmUlMjBjbG91ZHN8ZW58MHx8MHx8fDA%3D&w=1000&q=80");
+            /* Adjust background properties for better display */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            /* Optional: add background color in case the image is not fully displayed */
+            background-color: #f1f1f1;
+            /* Set a fixed height to ensure the image covers the entire viewport */
+            min-height: 100vh;
+            /* Optional: adjust text color to be readable against the background image */
+            color: #fff;
+        }
+
+        /* Additional CSS for your weather app styles can be added here */
+        h1 {
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+
+</head>
+<body class="bg-info text-white" >
+<div class="text-center">
+    <h1 class="mt-5">Weather Report</h1> <br>
+    <form action="/" method="post"> 
+    <div class="container"> 
+        <div class="row">
+            <div class="col-sm">
+               <input type="text" id="cityName" name="cityName" placeholder="City" class="form-control">
+            </div>
+            <div class="col-sm"> 
+               <input type="text" id="countryName" name="countryName" placeholder="Country" class="form-control">
+            </div>
+        </div>
+    </div> <br>
+    <button class="submit btn btn-light">Find</button>
+    </form>
+
+
+    {% if data %}
+    {{data.main}}: {{ data.description }} <br>
+    <img src="https://openweathermap.org/img/wn/{{data.icon}}@2x.png" alt="Icon">
+    {{data.temperature}} C
+    {% endif %}
+
+</div> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
