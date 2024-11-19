@@ -6,30 +6,23 @@ orbs:
 jobs:
   build-and-test-weather-app:
     docker:
-      - image: circleci/python:3.9  
+      - image: circleci/python:3.8
     steps:
-      - checkout  
+      - checkout  # checkout your repository
       - python/install-packages:
           pkg-manager: pip
-          packages:  
-            - flask
-            - requests
-            - python-dotenv
       - run:
-          name: Set Environment Variables
+          name: Set up the environment
           command: |
-            echo "API_KEY=7358abfeb3f3b0992112331542b8b769" > .env  # Set API key in .env file
+            echo "Setting up environment..."
+            pip install -r requirements.txt  # or any necessary packages
       - run:
-          name: Test Weather App
+          name: Run weather app test
           command: |
-            python <<EOF
-from weather_app import main
-result = main('Toronto', 'CA')
-print(f'Current temperature: {result.temperature}°C')
-print(f'Weather conditions: {result.main} - {result.description}')
-EOF
-
+            python -c "from weather_app import main; result = main('Toronto', 'CA'); print(f'Current temperature: {result.temperature}°C'); print(f'Weather conditions: {result.main} - {result.description}')"
+          
 workflows:
+  version: 2
   test-weather-app-workflow:
     jobs:
       - build-and-test-weather-app
