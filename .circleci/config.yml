@@ -15,7 +15,7 @@ jobs:
           name: Set up the environment
           command: |
             echo "Setting up environment..."
-            pip install -r requirements.txt  # or any necessary packages
+            pip install -r web_apps/requirements.txt  # or any necessary packages
       - run:
           name: Run weather app test
           command: |
