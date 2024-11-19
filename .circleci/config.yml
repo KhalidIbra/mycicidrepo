@@ -22,12 +22,12 @@ jobs:
       - run:
           name: Test Weather App
           command: |
-            echo "Running Weather App Test"
-            python -c "
+            python <<EOF
 from weather_app import main
 result = main('Toronto', 'CA')
 print(f'Current temperature: {result.temperature}°C')
-print(f'Weather conditions: {result.main} - {result.description}')"
+print(f'Weather conditions: {result.main} - {result.description}')
+EOF
 
 workflows:
   test-weather-app-workflow:
